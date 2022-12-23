@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 
 
 export const ButtonContainer = styled.div`
@@ -45,3 +45,4 @@ export const Cell = styled.td`
     width: ${props => props.width};
     text-align: ${props => props.text};
 `
+

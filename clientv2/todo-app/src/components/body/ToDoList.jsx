@@ -7,6 +7,7 @@ const ToDoList = () => {
     
     const [backEndData, setBackEndData] = useState([])
     const [tipoTareas, setTipoTareas] = useState("todas")
+    const [taskData, setTaskData] = useState('')
         
     useEffect((prevState) => {
 
@@ -45,6 +46,32 @@ const ToDoList = () => {
     const taskProps = {
         tipoTareas,
     }
+
+    const addTask = (e)=>{
+        e.preventDefault()
+        let url = "http://localhost:5000/api"
+        let body = {
+            name: taskData,
+            state: 'pendiente'
+        }
+
+        const settings = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }    
+
+        fetch(url, settings, true)
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+          console.log(data)          
+        })
+    }
     
 
     return (
@@ -72,6 +99,12 @@ const ToDoList = () => {
                 }
             </TableBody>
         </ToDoContainer>
+        <ButtonContainer>
+            <form onSubmit={addTask}>
+                <input type="text" placeholder='Tarea' onChange={(e)=>{setTaskData(e.target.value)}}/>
+                <button type='submit' className='button-62'>Agregar Tarea</button>
+            </form>
+        </ButtonContainer>
         </>
     )
 }
