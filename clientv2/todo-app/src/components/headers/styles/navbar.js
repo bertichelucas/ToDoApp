@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components"
+import styled from "styled-components"
 import * as palette from "../../../cssvariables.js"
 
 export const NavBar = styled.nav`
