@@ -1,44 +1,21 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { Column, ColumnName, TableBody, ToDoContainer, ButtonContainer } from './todolist.js'
 import TaskRow from './TaskRow.jsx'
+import { useContextProvider } from '../util/global.context.jsx'
+import { useEffect } from 'react'
 
 const ToDoList = () => {
 
+    const contextState = useContextProvider().contextState
     
-    const [backEndData, setBackEndData] = useState([])
     const [tipoTareas, setTipoTareas] = useState("todas")
     const [taskData, setTaskData] = useState('')
-        
-    useEffect((prevState) => {
-
-
-        let url = "http://localhost:5000/api"
-
-        if (tipoTareas === "finalizadas"){
-            url += "/completed"
-        }else if (tipoTareas === "pendientes"){
-            url += "/pendant"
-        
-        }
-
-        const settings = {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-        }    
-
-        fetch(url, settings, true)
-        .then(res => {
-            return res.json()
-        })
-        .then(data => {
-            setBackEndData(data)            
-            
-        })
-    }, [tipoTareas])
     
+    useEffect(()=>{
+        
+    },[tipoTareas])
+    
+
     const handleClick = (valor) =>{
         setTipoTareas(valor)
     }
@@ -78,8 +55,8 @@ const ToDoList = () => {
         <>
         <ButtonContainer>
             <div className="half-div">
-                <button className="button-62"  onClick={()=> {handleClick("finalizadas")}}>Completadas</button>
-                <button className="button-62"  onClick={()=> {handleClick("pendientes")}}>En progreso</button>
+                <button className="button-62"  onClick={()=> {handleClick("finalizada")}}>Completadas</button>
+                <button className="button-62"  onClick={()=> {handleClick("pendiente")}}>En progreso</button>
                 <button className="button-62" onClick={()=> {handleClick("todas")}}>Todas</button>
             </div>
         </ButtonContainer>
@@ -93,7 +70,9 @@ const ToDoList = () => {
                 </Column>
 
                 {
-                    backEndData.map((task, index) => {
+                    tipoTareas === 'todas'? contextState.tasks.map((task, index) => {
+                        return (<TaskRow tarea={task} key={task.id} numero={index + 1} manejoEstado={taskProps}></TaskRow>)}):
+                    contextState.tasks.filter(task => task.STATE === tipoTareas).map((task, index) => {
                         return (<TaskRow tarea={task} key={task.id} numero={index + 1} manejoEstado={taskProps}></TaskRow>)
                     })
                 }
