@@ -33,3 +33,11 @@
     text-align: center;
     
 }
+
+.formTarea{
+    border: 2px solid blue;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

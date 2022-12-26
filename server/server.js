@@ -76,4 +76,10 @@ app.get("/api/check", (req, res)=>{
     })    
 })
 
+app.post("/api/check", (req, res)=>{
+    checkQueries.createCheckItem(req.body)
+    res.json()
+    res.status(200)
+})
+
 app.listen(5000, () =>{ console.log("Server started on port 5000")})

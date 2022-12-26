@@ -9,7 +9,7 @@ var con = mysql.createConnection({
 
 module.exports = {
     createCheckItem: function(check){
-        var sql = `INSERT INTO CHECKS(NAME, REPEATABLE, TIMES_COMPLETED ) VALUES ("${check.name}", "${check.repeatable}", 0)`;
+        var sql = `INSERT INTO CHECKS(NAME, REPEATABLE, TIMES_COMPLETED ) VALUES ("${check.name}", ${check.repeatable}, 0)`;
             con.query(sql, function (err, result) {
                 if (err) throw err;
                 console.log("1 record inserted into Checks");
