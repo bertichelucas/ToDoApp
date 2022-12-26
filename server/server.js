@@ -1,6 +1,7 @@
 var database = require("./database/create")
 var tables = require("./database/create-tables")
-var queries = require("./database/taskrepo")
+var todoQueries = require("./database/taskrepo")
+var checkQueries = require("./database/checkrepo")
 
 
 //npm run dev to run the server
@@ -25,27 +26,29 @@ app.use(bodyParser.json())
 
 app.use(cors(corsOptions)) // Use this after the variable declaration
 
+/*TASK CONTROLLER */
+
 app.get("/api", (req, res) =>{
-    queries.getAllTasks((result) =>{    
+    todoQueries.getAllTasks((result) =>{    
         res.json(result)
     })
 })
 
 app.get("/api/completed", (req, res) =>{
-    queries.getAllCompletedTasks((result) =>{    
+    todoQueries.getAllCompletedTasks((result) =>{    
         res.json(result)
     })
 })
 
 app.get("/api/pendant", (req, res) =>{
-    queries.getAllPendantTasks((result) =>{    
+    todoQueries.getAllPendantTasks((result) =>{    
         res.json(result)
     })
 })
 
 
 app.put("/api", (req, res) =>{
-    queries.updateTask(req.body)
+    todoQueries.updateTask(req.body)
     res.json()
     res.status(200)
 })
@@ -53,9 +56,24 @@ app.put("/api", (req, res) =>{
 
 app.post("/api", (req, res) =>{
     
-    queries.createTask(req.body)
+    todoQueries.createTask(req.body)
     res.json(req.body)
     
+})
+
+app.delete("/api", (req, res) =>{
+    todoQueries.deleteTask(req.body)
+    res.json()
+    res.status(200)
+})
+
+
+/* CHECK CONTROLLER */
+
+app.get("/api/check", (req, res)=>{
+    checkQueries.getAllCheckItems((result) =>{
+        res.json(result)
+    })    
 })
 
 app.listen(5000, () =>{ console.log("Server started on port 5000")})

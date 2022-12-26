@@ -13,7 +13,7 @@ module.exports = {
             console.log("Connected!");
             con.query("CREATE DATABASE IF NOT EXISTS tododb", function (err, result) {
                 if (err) throw err;
-                console.log("Database created");
+                console.log("Database working");
             });
         });
     }

@@ -50,6 +50,14 @@ module.exports = {
             if (err) throw err;
             console.log("1 record updated");
         });
+    },
+
+    deleteTask: function(task){
+        var sql = `DELETE FROM TASKS WHERE ID =${task.id}`
+        con.query(sql, function (err, result) {
+            if (err) throw err;
+            console.log(`Deleted the record with id ${task.id}`);
+        });
     }
 }
 
