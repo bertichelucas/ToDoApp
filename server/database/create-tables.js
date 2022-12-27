@@ -17,7 +17,13 @@ module.exports = {
               if (err) throw err;
               console.log("Todo tasks Table working");
             });
-            var sqlCheck = "CREATE TABLE IF NOT EXISTS CHECKS (ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(255), REPEATABLE BOOLEAN, TIMES_COMPLETED LONG, PRIMARY KEY(ID))"
+            /*var dropTable = `DROP TABLE IF EXISTS CHECKS`
+            con.query(dropTable, function(err, result){
+              if (err) throw err
+              console.log(`table dropped`)
+            })*/
+            var sqlCheck = `CREATE TABLE IF NOT EXISTS CHECKS (ID INT NOT NULL AUTO_INCREMENT, NAME VARCHAR(255), 
+                            TIMES_COMPLETED INT, TIMES_NOTCOMPLETED INT, STREAK INT, PRIMARY KEY(ID))`
             con.query(sqlCheck, function (err, result) {
               if (err) throw err;
               console.log("Check List Table working ")
