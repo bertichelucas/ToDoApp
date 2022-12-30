@@ -40,7 +40,7 @@ const CheckRow = (props) => {
     return (
         <div className="itemWrapper">
             <div className="checkItem">
-                <p>{item.NAME}</p>
+                <p className='itemName'>{item.NAME}</p>
                 <p>Times Done: {item.TIMES_COMPLETED}</p>
                 <p>Times not Done: {item.TIMES_NOTCOMPLETED}</p>
                 <p>Streak: {item.STREAK}</p>
@@ -48,7 +48,7 @@ const CheckRow = (props) => {
             </div>
         </div>
         
-  )
+    )
 }
 
 export default CheckRow

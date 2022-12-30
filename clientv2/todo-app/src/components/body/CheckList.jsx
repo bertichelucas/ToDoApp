@@ -43,13 +43,20 @@ const CheckList = () =>{
                 <h1>CheckList</h1>
                 <h2>Points:{calcPoints()}</h2>
             </div>
-         {contextCheckState.checks.map(item => <CheckRow key={item.ID} data={item}></CheckRow>)}
-        <CheckSubmit></CheckSubmit>
-         <form className="formTarea" onSubmit={addCheck}>
-            <label>Agregar Tarea</label>
-                <input type="text" placeholder='Nombre Tarea' onChange={(e)=>{setCheckItem({...checkItem, name:e.target.value})}}/>
-                <button type='submit' className='button-62'>Agregar Check Item</button>
-            </form>
+            {contextCheckState.checks.map(item => <CheckRow key={item.ID} data={item}></CheckRow>)}
+        
+            <CheckSubmit></CheckSubmit>
+
+            <div className="detailWrapper">
+                <details>
+                    <summary className="summary">Agregar Daily</summary>
+                    <form className="formTarea" onSubmit={addCheck}>
+                        <input type="text" placeholder='Nombre Daily' onChange={(e)=>{setCheckItem({...checkItem, name:e.target.value})}}/>
+                        <button type='submit'>agregar</button>        
+                    </form>
+                </details>
+            </div>
+            
         </div>
     )
 }

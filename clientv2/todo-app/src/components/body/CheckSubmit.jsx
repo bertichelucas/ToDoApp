@@ -13,7 +13,7 @@ const CheckSubmit = () => {
 
     return (
         <div>
-            <button onClick={submitTaks}>Submit day</button>
+            <button  className='submitButton' onClick={submitTaks}>Submit day</button>
         </div>
     )
 }

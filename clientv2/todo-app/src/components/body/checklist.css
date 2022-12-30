@@ -3,50 +3,113 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #99aab5;
+    background-color: #2c2f33;
     border: 2px solid black;
     border-radius: 10px;
     margin-top: 2vh;
 }
 
 .itemWrapper{
-    background-image: linear-gradient(to bottom right, #ff3cac, #562b7c);
+    background-image: linear-gradient(to bottom right, #7289DA, #99aab5);
     border-radius: 15px;
     width: 90%;
-    padding: 5px;
+    padding: 2px;
     margin: 5px 0;
 }
 
 .checkItem{
-    border: 1px solid crimson;
     border-radius: 15px;
     padding: 10px;
-    background-color: #2c2f33;
+    background-color: #23272A;
     display: flex;
     justify-content: space-between;
 }
 
-.checkItem p{
-    border: 1px solid purple;
-}
-.checkItem button{
-    border: 2px solid green;
+.itemWrapper:hover, .detailWrapper:hover{
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 .checkItem:hover{
-    background-color: aliceblue;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+        animation-name: example;
+        animation-duration: 0.25s;
+        border-left: 8px solid #7289DA;
+}
+
+@keyframes example {
+    0%   {border-left: 2px solid #7289DA;}
+    25%  {border-left: 3px solid #7289DA;}
+    50%  {border-left: 4px solid #7289DA;}
+    100% {border-left: 5px solid #7289DA;}
+}
+
+.itemName {
+    width: 50%;
+}
+
+.checkItem p{
+    color: #7289DA;
+}
+button{
+    display: inline-block;
+    font-family: Whitney, "Open Sans", Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 11pt;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 45px;
+    width: 100px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+    background-color: #7289da;
+    border: 2px solid #7289da;
+    color: #fff;
+}
+
+button:hover{
+    transform: translateY(1px);
+}
+
+.submitButton{
+    margin: 10px;
 }
 
 .checkInfo{
-    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
     width: 90%;
     text-align: center;
-    
+    gap: 10px;
+    margin: 10px 0;
+}
+
+h1{
+    font-size: 2rem;
+}
+
+.detailWrapper{
+    background-image: linear-gradient(to bottom right, #7289DA, #99aab5);
+    border-radius: 15px;
+    padding: 2px;
+    margin: 5px 0;
+    width: 30%;
+}
+
+details{
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #23272A;
+}
+
+.summary{
+    text-align: center;
 }
 
 .formTarea{
-    border: 2px solid blue;
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
+
