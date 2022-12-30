@@ -43,6 +43,17 @@ const CheckList = () =>{
                 <h1>CheckList</h1>
                 <h2>Points:{calcPoints()}</h2>
             </div>
+
+            <div className='itemWrapper'>
+                <div className='checkItem'>
+                    <p id='tarea'>Nombre Daily</p>
+                    <p id='done'>Times Done</p>
+                    <p id='notDone'>Times Passed</p>
+                    <p id='streak'>Streak</p>
+                    <p id= 'actionCheck'>Complete</p>
+                </div>
+            </div>
+
             {contextCheckState.checks.map(item => <CheckRow key={item.ID} data={item}></CheckRow>)}
         
             <CheckSubmit></CheckSubmit>

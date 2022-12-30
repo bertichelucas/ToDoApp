@@ -1,5 +1,4 @@
 import React from 'react'
-import { Column, Cell } from './todolist.js'
 import { useContextProvider } from '../util/global.context.jsx'
 
 const TaskRow = (props) => {
@@ -63,15 +62,18 @@ const TaskRow = (props) => {
     }
 
     return (
-        <Column>
-            <Cell  width="40%" text="left">{props.tarea.NAME}</Cell>
-            <Cell  width="20%" text="right">{props.tarea.STATE}</Cell>
-            <Cell  width="20%" text="right">{props.numero}</Cell>
-            <Cell  width="20%" text="right">
-                <button className="button-62" onClick={handleUpdate} >{props.tarea.STATE === "finalizada"?"Restore":"Done"}</button>
-                <button className="button-62" onClick={handleDelete}>Trash</button>
-            </Cell>
-        </Column>
+        <div className='itemWrapper'>
+
+            <tr className='checkItem'>
+                <p  className='itemName'>{props.tarea.NAME}</p>
+                <p id='state' >{props.tarea.STATE}</p>
+                <p id='number' >{props.numero}</p>
+                <div className='actions' id= 'actions'>
+                    <button className="button-62" onClick={handleUpdate} >{props.tarea.STATE === "finalizada"?"Restore":"Done"}</button>
+                    <button className="button-62" onClick={handleDelete}>Trash</button>
+                </div>
+            </tr>
+        </div>
     )
 }
 

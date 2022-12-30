@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import { Column, ColumnName, TableBody, ToDoContainer, ButtonContainer } from './todolist.js'
 import TaskRow from './TaskRow.jsx'
 import { useContextProvider } from '../util/global.context.jsx'
 import { useEffect } from 'react'
+import './checklist.css'
 
 const ToDoList = () => {
 
@@ -52,22 +52,25 @@ const ToDoList = () => {
     
 
     return (
-        <>
-        <ButtonContainer>
-            <div className="half-div">
-                <button className="button-62"  onClick={()=> {handleClick("finalizada")}}>Completadas</button>
-                <button className="button-62"  onClick={()=> {handleClick("pendiente")}}>En progreso</button>
-                <button className="button-62" onClick={()=> {handleClick("todas")}}>Todas</button>
+        <div className='checkBody'>
+            <div className='checkInfo'>
+                <h1>ToDo List</h1>
+                <div className="half-div">
+                    <button onClick={()=> {handleClick("finalizada")}}>Completadas</button>
+                    <button onClick={()=> {handleClick("pendiente")}}>En progreso</button>
+                    <button onClick={()=> {handleClick("todas")}}>Todas</button>
+                </div>
             </div>
-        </ButtonContainer>
-        <ToDoContainer>
-            <TableBody>
-                <Column>
-                    <ColumnName width="40%" text="left">Tarea</ColumnName>
-                    <ColumnName width="20%" text="right">Estado</ColumnName>
-                    <ColumnName width="20%" text="right">Numero</ColumnName>
-                    <ColumnName width="20%" text="right">Acciones</ColumnName>
-                </Column>
+        
+            
+            <div className='itemWrapper'>
+                <div className='checkItem'>
+                    <p id='tarea'>Tarea</p>
+                    <p id='state'>Estado</p>
+                    <p id='number'>Numero</p>
+                    <p id='actions'>Acciones</p>
+                </div>
+            </div>
 
                 {
                     tipoTareas === 'todas'? contextState.tasks.map((task, index) => {
@@ -76,15 +79,17 @@ const ToDoList = () => {
                         return (<TaskRow tarea={task} key={task.id} numero={index + 1} manejoEstado={taskProps}></TaskRow>)
                     })
                 }
-            </TableBody>
-        </ToDoContainer>
-        <ButtonContainer>
-            <form onSubmit={addTask}>
-                <input type="text" placeholder='Tarea' onChange={(e)=>{setTaskData(e.target.value)}}/>
-                <button type='submit' className='button-62'>Agregar Tarea</button>
-            </form>
-        </ButtonContainer>
-        </>
+            
+            <div className='detailWrapper'>
+                <details>
+                    <summary className='summary'>Agregar Tarea</summary>
+                    <form  className='formTarea' onSubmit={addTask}>
+                        <input type="text" placeholder='Tarea' onChange={(e)=>{setTaskData(e.target.value)}}/>
+                        <button type='submit'>Agregar Tarea</button>
+                    </form>
+                </details>
+            </div>
+        </div>
     )
 }
 

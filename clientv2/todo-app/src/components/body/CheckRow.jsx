@@ -41,10 +41,10 @@ const CheckRow = (props) => {
         <div className="itemWrapper">
             <div className="checkItem">
                 <p className='itemName'>{item.NAME}</p>
-                <p>Times Done: {item.TIMES_COMPLETED}</p>
-                <p>Times not Done: {item.TIMES_NOTCOMPLETED}</p>
-                <p>Streak: {item.STREAK}</p>
-                <button onClick={completeCheckItem}>{item.COMPLETED? "Undone":"Complete"}</button>
+                <p id='done'>{item.TIMES_COMPLETED}</p>
+                <p id='notDone'>{item.TIMES_NOTCOMPLETED}</p>
+                <p id='streak'>{item.STREAK}</p>
+                <p id='actionCheck'><button onClick={completeCheckItem}>{item.COMPLETED? "Undone":"Complete"}</button></p>
             </div>
         </div>
         
