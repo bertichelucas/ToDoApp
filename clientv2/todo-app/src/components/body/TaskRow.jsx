@@ -69,8 +69,8 @@ const TaskRow = (props) => {
                 <p id='state' >{props.tarea.STATE}</p>
                 <p id='number' >{props.numero}</p>
                 <div className='actions' id= 'actions'>
-                    <button className="button-62" onClick={handleUpdate} >{props.tarea.STATE === "finalizada"?"Restore":"Done"}</button>
-                    <button className="button-62" onClick={handleDelete}>Trash</button>
+                    <button className={props.tarea.STATE === "finalizada"?"button-62 btnyellow":"button-62 btngreen"} onClick={handleUpdate} >{props.tarea.STATE === "finalizada"?"Restore":"Done"}</button>
+                    <button className="button-62 btnred" onClick={handleDelete}>Trash</button>
                 </div>
             </tr>
         </div>

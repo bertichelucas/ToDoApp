@@ -71,6 +71,18 @@ button:hover{
     transform: translateY(1px);
 }
 
+.btnred{
+    background-color: #A11D22;
+}
+
+.btnyellow{
+    background-color: #8C7B00;
+}
+
+.btngreen{
+    background-color: green;
+}
+
 .submitButton{
     margin: 10px;
 }
