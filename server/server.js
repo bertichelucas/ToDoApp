@@ -85,7 +85,7 @@ app.post("/api/check", (req, res)=>{
 app.put("/api/check", (req, res) => {
         const fecha = new Date()
         
-        var name = "./database/data.json"
+        var name = "../data.json"
         var m = JSON.parse(fs.readFileSync(name).toString());
         if (m.last_update_time === null || fecha.getDate() !== m.last_update_time){
             console.log("Se hace el update")
